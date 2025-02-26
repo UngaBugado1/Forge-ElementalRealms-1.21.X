@@ -4,5 +4,18 @@
   "item.elementalrealms.verindite_crystal": "Verindite Crystal",
   "item.elementalrealms.emberoot": "Emberoot",
   "block.elementalrealms.terraite": "Terraite",
-  "block.elementalrealms.geocluster": "Geocluster"
+  "block.elementalrealms.terraite_stairs": "Terraite Stairs",
+  "block.elementalrealms.terraite_slab": "Terraite Slab",
+  "block.elementalrealms.terraite_wall": "Terraite Wall",
+  "block.elementalrealms.polished_terraite": "Polished Terraite",
+  "block.elementalrealms.polished_terraite_stairs": "Polished Terraite Stairs",
+  "block.elementalrealms.polished_terraite_slab": "Polished Terraite Slab",
+  "block.elementalrealms.polished_terraite_wall": "Polished Terraite Wall",
+  "block.elementalrealms.polished_terraite_button": "Polished Terraite Button",
+  "block.elementalrealms.terraite_bricks": "Terraite Bricks",
+  "block.elementalrealms.terraite_brick_stairs": "Terraite Brick Stairs",
+  "block.elementalrealms.terraite_brick_slab": "Terraite Brick Slab",
+  "block.elementalrealms.terraite_brick_wall": "Terraite Brick Wall",
+  "block.elementalrealms.geocluster": "Geocluster",
+  "block.elementalrealms.chiseled_terraite": "Chiseled Terraite"
 }

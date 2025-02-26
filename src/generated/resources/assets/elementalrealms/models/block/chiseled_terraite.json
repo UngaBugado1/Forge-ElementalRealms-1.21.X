@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "elementalrealms:block/chiseled_terraite_bottom",
+    "east": "elementalrealms:block/chiseled_terraite_side1",
+    "north": "elementalrealms:block/chiseled_terraite_front",
+    "particle": "elementalrealms:block/chiseled_terraite_front",
+    "south": "elementalrealms:block/chiseled_terraite_back",
+    "up": "elementalrealms:block/chiseled_terraite_top",
+    "west": "elementalrealms:block/chiseled_terraite_side2"
+  }
+}

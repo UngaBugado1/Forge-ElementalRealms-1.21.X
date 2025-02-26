@@ -21,7 +21,20 @@ public static final RegistryObject<CreativeModeTab> TERRAVALE_ITEMS_TAB = CREATI
                 .displayItems((itemDisplayParameters, output) ->
                 {
                  output.accept(ModItems.VERINDITE_CRYSTAL.get());
+                 output.accept(ModBlocks.CHISELED_TERRAITE.get());
                  output.accept(ModBlocks.TERRAITE.get());
+                 output.accept(ModBlocks.TERRAITE_STAIRS.get());
+                 output.accept(ModBlocks.TERRAITE_SLAB.get());
+                 output.accept(ModBlocks.TERRAITE_WALL.get());
+                 output.accept(ModBlocks.POLISHED_TERRAITE.get());
+                 output.accept(ModBlocks.POLISHED_TERRAITE_STAIRS.get());
+                 output.accept(ModBlocks.POLISHED_TERRAITE_SLAB.get());
+                 output.accept(ModBlocks.POLISHED_TERRAITE_WALL.get());
+                 output.accept(ModBlocks.POLISHED_TERRAITE_BUTTON.get());
+                 output.accept(ModBlocks.TERRAITE_BRICKS.get());
+                 output.accept(ModBlocks.TERRAITE_BRICK_STAIRS.get());
+                 output.accept(ModBlocks.TERRAITE_BRICK_SLAB.get());
+                 output.accept(ModBlocks.TERRAITE_BRICK_WALL.get());
                  output.accept(ModBlocks.GEOCLUSTER.get());
                  output.accept(ModItems.EMBEROOT.get());
                 }).build());

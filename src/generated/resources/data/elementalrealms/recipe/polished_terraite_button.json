@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "terraite",
+  "ingredients": [
+    {
+      "item": "elementalrealms:polished_terraite"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "elementalrealms:polished_terraite_button"
+  }
+}

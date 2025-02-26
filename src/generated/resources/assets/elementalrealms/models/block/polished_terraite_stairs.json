@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "elementalrealms:block/polished_terraite",
+    "side": "elementalrealms:block/polished_terraite",
+    "top": "elementalrealms:block/polished_terraite"
+  }
+}

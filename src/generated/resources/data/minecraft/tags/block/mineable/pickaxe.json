@@ -1,0 +1,19 @@
+{
+  "values": [
+    "elementalrealms:chiseled_terraite",
+    "elementalrealms:terraite",
+    "elementalrealms:terraite_stairs",
+    "elementalrealms:terraite_slab",
+    "elementalrealms:terraite_wall",
+    "elementalrealms:polished_terraite",
+    "elementalrealms:polished_terraite_stairs",
+    "elementalrealms:polished_terraite_slab",
+    "elementalrealms:polished_terraite_wall",
+    "elementalrealms:polished_terraite_button",
+    "elementalrealms:terraite_bricks",
+    "elementalrealms:terraite_brick_stairs",
+    "elementalrealms:terraite_brick_slab",
+    "elementalrealms:terraite_brick_wall",
+    "elementalrealms:geocluster"
+  ]
+}

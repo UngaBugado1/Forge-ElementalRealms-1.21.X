@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "elementalrealms:block/terraite",
+    "side": "elementalrealms:block/terraite",
+    "top": "elementalrealms:block/terraite"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "elementalrealms:block/chiseled_terraite",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "elementalrealms:block/chiseled_terraite"
+    },
+    "facing=south": {
+      "model": "elementalrealms:block/chiseled_terraite",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "elementalrealms:block/chiseled_terraite",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "terraite",
+  "key": {
+    "#": {
+      "item": "elementalrealms:terraite"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "elementalrealms:terraite_stairs"
+  }
+}

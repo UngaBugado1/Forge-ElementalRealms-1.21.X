@@ -1,0 +1,27 @@
+[25fev.2025 20:56:53.713] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\dinos\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, elementalrealms, --all, --output, C:\Users\dinos\OneDrive\Documentos\Minecraft Modding\Forge - ElementalRealms - 1.21.X\src\generated\resources, --existing, C:\Users\dinos\OneDrive\Documentos\Minecraft Modding\Forge - ElementalRealms - 1.21.X\src\main\resources]
+[25fev.2025 20:56:53.725] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.5+11-LTS
+[25fev.2025 20:56:53.731] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.1 starting: java version 21.0.5 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[25fev.2025 20:56:53.918] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[25fev.2025 20:56:54.130] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/dinos/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
+[25fev.2025 20:56:57.465] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[25fev.2025 20:57:00.775] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\dinos\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, elementalrealms, --all, --output, C:\Users\dinos\OneDrive\Documentos\Minecraft Modding\Forge - ElementalRealms - 1.21.X\src\generated\resources, --existing, C:\Users\dinos\OneDrive\Documentos\Minecraft Modding\Forge - ElementalRealms - 1.21.X\src\main\resources]
+[25fev.2025 20:57:14.467] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 51.0.33, for MC 1.21 with MCP 20240613.102039
+[25fev.2025 20:57:14.468] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v51.0.33 Initialized
+[25fev.2025 20:57:14.497] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[25fev.2025 20:57:16.401] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [elementalrealms]
+[25fev.2025 20:57:16.738] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/dinos/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.33_mapped_parchment_2024.07.28-1.21/forge-1.21-51.0.33_mapped_parchment_2024.07.28-1.21-recomp.jar%230!/assets/.mcassetsroot' uses unexpected schema
+[25fev.2025 20:57:16.764] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/dinos/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.33_mapped_parchment_2024.07.28-1.21/forge-1.21-51.0.33_mapped_parchment_2024.07.28-1.21-recomp.jar%230!/data/.mcassetsroot' uses unexpected schema
+[25fev.2025 20:57:17.175] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[25fev.2025 20:57:17.676] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 499 ms
+[25fev.2025 20:57:17.677] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[25fev.2025 20:57:17.776] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 95 ms
+[25fev.2025 20:57:17.781] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id elementalrealms
+[25fev.2025 20:57:17.801] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id elementalrealms finished after 19 ms
+[25fev.2025 20:57:17.801] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id elementalrealms
+[25fev.2025 20:57:17.805] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id elementalrealms finished after 0 ms
+[25fev.2025 20:57:17.805] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: elementalrealms
+[25fev.2025 20:57:17.813] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: elementalrealms finished after 6 ms
+[25fev.2025 20:57:17.813] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: elementalrealms
+[25fev.2025 20:57:18.268] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: elementalrealms finished after 453 ms
+[25fev.2025 20:57:18.271] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 1096 ms
+[25fev.2025 20:57:18.317] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 100, old count: 100, new count: 101, removed stale: 0, written: 2

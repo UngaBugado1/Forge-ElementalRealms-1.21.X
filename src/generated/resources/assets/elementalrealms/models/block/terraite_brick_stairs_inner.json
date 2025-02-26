@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "elementalrealms:block/terraite_bricks",
+    "side": "elementalrealms:block/terraite_bricks",
+    "top": "elementalrealms:block/terraite_bricks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "elementalrealms:block/terraite_brick_slab"
+    },
+    "type=double": {
+      "model": "elementalrealms:block/terraite_bricks"
+    },
+    "type=top": {
+      "model": "elementalrealms:block/terraite_brick_slab_top"
+    }
+  }
+}
