@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "elementalrealms:polished_terraite"
+  },
+  "result": {
+    "count": 1,
+    "id": "elementalrealms:polished_terraite_stairs"
+  }
+}

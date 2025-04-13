@@ -37,6 +37,11 @@ public static final RegistryObject<CreativeModeTab> TERRAVALE_ITEMS_TAB = CREATI
                  output.accept(ModBlocks.TERRAITE_BRICK_WALL.get());
                  output.accept(ModBlocks.GEOCLUSTER.get());
                  output.accept(ModItems.EMBEROOT.get());
+                 output.accept(ModItems.TERRA_WARHAMMER.get());
+                 output.accept(ModItems.AMETHYST_HELMET.get());
+                 output.accept(ModItems.AMETHYST_CHESTPLATE.get());
+                 output.accept(ModItems.AMETHYST_LEGGINGS.get());
+                 output.accept(ModItems.AMETHYST_BOOTS.get());
                 }).build());
 
 

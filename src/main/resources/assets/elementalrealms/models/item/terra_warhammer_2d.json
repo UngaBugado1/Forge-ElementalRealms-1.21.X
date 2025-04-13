@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "elementalrealms:item/terra_warhammer_2d"
+  }
+}

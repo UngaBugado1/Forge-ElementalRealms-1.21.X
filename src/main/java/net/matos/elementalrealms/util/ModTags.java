@@ -11,6 +11,10 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
     public static class Blocks {
 
+        public static final TagKey<Block> NEEDS_TERRAVALE_TOOL = createTag("needs_terravale_tool");
+        public static final TagKey<Block> INCORRECT_FOR_TERRAVALE_TOOL = createTag("incorrect_from_terravale");
+
+
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ElementalRealms.MOD_ID, name));
         }

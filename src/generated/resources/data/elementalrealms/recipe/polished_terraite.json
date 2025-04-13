@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "building",
   "key": {
-    "A": {
+    "S": {
       "item": "elementalrealms:terraite"
     }
   },
   "pattern": [
-    "AA",
-    "AA"
+    "SS",
+    "SS"
   ],
   "result": {
-    "count": 1,
+    "count": 4,
     "id": "elementalrealms:polished_terraite"
   }
 }
