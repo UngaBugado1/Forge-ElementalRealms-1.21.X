@@ -1,6 +1,6 @@
 package net.matos.elementalrealms.item.custom;
 
-import net.matos.elementalrealms.item.client.AmethystArmorRenderer;
+import net.matos.elementalrealms.item.client.armor.AmethystArmorRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -10,7 +10,6 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.GeoRenderProvider;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
@@ -19,7 +18,6 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
-import java.util.Set;
 import java.util.function.Consumer;
 
 public final class AmethystArmorItem extends ArmorItem implements GeoItem {

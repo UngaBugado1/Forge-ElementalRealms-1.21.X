@@ -1,4 +1,4 @@
-package net.matos.elementalrealms.item.client;
+package net.matos.elementalrealms.item.client.armor;
 
 
 import net.matos.elementalrealms.ElementalRealms;

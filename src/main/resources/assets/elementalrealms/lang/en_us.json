@@ -1,9 +1,16 @@
 {
   "creativetab.elementalrealms.terravale_items": "Terravale",
 
+  "effect.elementalrealms.golden_bloom": "Golden Bloom",
+
   "item.elementalrealms.verindite_crystal": "Verindite Crystal",
   "item.elementalrealms.emberoot": "Emberoot",
   "item.elementalrealms.terra_warhammer": "Terra Warhammer",
+  "item.elementalrealms.amethyst_helmet": "Amethyst Helmet",
+  "item.elementalrealms.amethyst_chestplate": "Amethyst Chestplate",
+  "item.elementalrealms.amethyst_leggings": "Amethyst Leggings",
+  "item.elementalrealms.amethyst_boots": "Amethyst Boots",
+
   "block.elementalrealms.terraite": "Terraite",
   "block.elementalrealms.terraite_stairs": "Terraite Stairs",
   "block.elementalrealms.terraite_slab": "Terraite Slab",

@@ -13,20 +13,16 @@ public class ModTags {
 
         public static final TagKey<Block> NEEDS_TERRAVALE_TOOL = createTag("needs_terravale_tool");
         public static final TagKey<Block> INCORRECT_FOR_TERRAVALE_TOOL = createTag("incorrect_from_terravale");
-
+        public static final TagKey<Block> FUNGUS_BLOCKS = createTag("fungus_blocks");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ElementalRealms.MOD_ID, name));
         }
     }
 
-    //EXAMPLE CLASS
 
-//    public static class Items {
-//        public static final TagKey<Item> TRANSFORMABLE_ITEMS = createTag("transformable_items");
-//
-//        private static TagKey<Item> createTag(String name) {
-//            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ElementalRealms.MOD_ID, name));
-//        }
-//    }
-}
+
+        private static TagKey<Item> createTag(String name) {
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(ElementalRealms.MOD_ID, name));
+        }
+    }
