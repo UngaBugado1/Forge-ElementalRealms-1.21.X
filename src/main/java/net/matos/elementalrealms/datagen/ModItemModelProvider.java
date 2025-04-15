@@ -4,6 +4,7 @@ package net.matos.elementalrealms.datagen;
 import net.matos.elementalrealms.ElementalRealms;
 import net.matos.elementalrealms.block.ModBlocks;
 import net.matos.elementalrealms.item.ModItems;
+import net.matos.elementalrealms.potion.ModPotions;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;

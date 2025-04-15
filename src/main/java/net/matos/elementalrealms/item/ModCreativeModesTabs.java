@@ -42,6 +42,7 @@ public static final RegistryObject<CreativeModeTab> TERRAVALE_ITEMS_TAB = CREATI
                  output.accept(ModItems.AMETHYST_CHESTPLATE.get());
                  output.accept(ModItems.AMETHYST_LEGGINGS.get());
                  output.accept(ModItems.AMETHYST_BOOTS.get());
+                 output.accept(ModItems.GOLDEN_ESSENCE.get());
                 }).build());
 
 

@@ -5,6 +5,7 @@ import net.matos.elementalrealms.block.ModBlocks;
 import net.matos.elementalrealms.effect.ModEffects;
 import net.matos.elementalrealms.item.ModCreativeModesTabs;
 import net.matos.elementalrealms.item.ModItems;
+import net.matos.elementalrealms.potion.ModPotions;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,6 +44,7 @@ public class ElementalRealms {
         ModBlocks.register(modEventBus);
 
         ModEffects.register(modEventBus);
+        ModPotions.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

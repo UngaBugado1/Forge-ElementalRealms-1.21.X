@@ -1,14 +1,21 @@
 package net.matos.elementalrealms.effect;
 
+import net.matos.elementalrealms.util.ModTags;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.entity.player.Player;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GoldenBloomEffect extends MobEffect {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger("ElementalRealms");
 
     public GoldenBloomEffect(MobEffectCategory category, int color) {
         super(category, color);
@@ -16,34 +23,52 @@ public class GoldenBloomEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        // Regeneration effect
+        // Regeneration
         if (entity.getHealth() < entity.getMaxHealth()) {
-            float regenAmount = 0.5F + amplifier * 0.2F; // Regenerate more at higher levels
+            float regenAmount = 0.5F + amplifier * 0.2F;
             entity.heal(regenAmount);
         }
 
-        // Hunger/saturation boost every 5 seconds
+        // Saturation every 5 seconds
         if (entity.tickCount % 100 == 0 && entity instanceof Player player) {
             if (player.getFoodData().needsFood()) {
                 player.getFoodData().eat(1, 0.3F);
             }
         }
 
-        // Debug: Check what block the player is stepping on
-        debugBlockUnderfoot(entity);
+        // Speed boost if standing on fungus block
+        applyFungusBoost(entity, amplifier);
 
         return true;
     }
 
-    // Function to debug what block the player is stepping on
-    private void debugBlockUnderfoot(LivingEntity entity) {
-        if (entity.getCommandSenderWorld().isClientSide) return; // Don't apply on the client side, only on the server side
+    private void applyFungusBoost(LivingEntity entity, int amplifier) {
+        if (entity.level().isClientSide) return;
 
-        BlockPos entityPos = entity.blockPosition();
-        Level world = entity.getCommandSenderWorld(); // Correct way to get the level
-        BlockState blockState = world.getBlockState(entityPos.below()); // Check block below the player
+        Level level = entity.level();
+        BlockPos blockPos = entity.blockPosition().below();
+        BlockState blockState = level.getBlockState(blockPos);
 
-        // Print the block's name/type to the console for debugging
-        System.out.println("Player is stepping on: " + blockState.getBlock().getName().getString());
+        if (blockState.is(ModTags.Blocks.FUNGUS_BLOCKS)) {
+            // Speed Boost
+            double baseSpeed = 0.1D + (0.05D * amplifier);
+            entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0D + baseSpeed, 1.0D, 1.0D + baseSpeed));
+
+            // Cosmetic particles
+            if (level instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(
+                        ParticleTypes.HAPPY_VILLAGER,
+                        entity.getX(), entity.getY() + 1, entity.getZ(),
+                        2, 0.2, 0.2, 0.2, 0.01
+                );
+            }
+
+            LOGGER.info("Golden Bloom effect: speed boosted on {}", blockState.getBlock().getName().getString());
+        }
+    }
+
+    @Override
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
+        return true;
     }
 }

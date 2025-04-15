@@ -40,6 +40,10 @@ public class ModItems {
     public static final RegistryObject<Item> AMETHYST_BOOTS = ITEMS.register("amethyst_boots",
             () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> GOLDEN_ESSENCE = ITEMS.register("golden_essence",
+            () -> new Item(new Item.Properties()));
+
+
 
 
     public static void register(IEventBus eventBus)
