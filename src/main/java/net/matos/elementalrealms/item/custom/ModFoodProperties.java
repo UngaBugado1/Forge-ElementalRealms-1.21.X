@@ -1,5 +1,6 @@
 package net.matos.elementalrealms.item.custom;
 
+import net.matos.elementalrealms.effect.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
