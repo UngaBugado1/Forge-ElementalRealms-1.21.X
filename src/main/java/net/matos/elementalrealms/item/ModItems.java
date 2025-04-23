@@ -1,10 +1,7 @@
 package net.matos.elementalrealms.item;
 
 import net.matos.elementalrealms.ElementalRealms;
-import net.matos.elementalrealms.item.custom.AmethystArmorItem;
-import net.matos.elementalrealms.item.custom.HammerItem;
-import net.matos.elementalrealms.item.custom.ModFoodProperties;
-import net.matos.elementalrealms.item.custom.ModToolTiers;
+import net.matos.elementalrealms.item.custom.*;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
@@ -29,19 +26,19 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> AMETHYST_HELMET = ITEMS.register("amethyst_helmet",
-            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> AMETHYST_CHESTPLATE = ITEMS.register("amethyst_chestplate",
-            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> AMETHYST_LEGGINGS = ITEMS.register("amethyst_leggings",
-            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> AMETHYST_BOOTS = ITEMS.register("amethyst_boots",
-            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> GOLDEN_ESSENCE = ITEMS.register("golden_essence",
-            () -> new Item(new Item.Properties().stacksTo(16)));
+            () -> new GoldenEssenceItem());
 
 
 

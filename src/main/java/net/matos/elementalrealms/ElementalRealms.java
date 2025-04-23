@@ -3,6 +3,7 @@ package net.matos.elementalrealms;
 import com.mojang.logging.LogUtils;
 import net.matos.elementalrealms.block.ModBlocks;
 import net.matos.elementalrealms.effect.ModEffects;
+import net.matos.elementalrealms.enchantment.ModEnchantmentEffects;
 import net.matos.elementalrealms.item.ModCreativeModesTabs;
 import net.matos.elementalrealms.item.ModItems;
 import net.matos.elementalrealms.potion.ModPotions;
@@ -45,6 +46,8 @@ public class ElementalRealms {
 
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
+
+        ModEnchantmentEffects.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
