@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "elementalrealms:block/archaic_log",
+    "side": "elementalrealms:block/archaic_log"
+  }
+}
