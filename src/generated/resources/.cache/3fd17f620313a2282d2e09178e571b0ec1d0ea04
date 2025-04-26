@@ -1,4 +1,6 @@
-// 1.21.1	2025-03-28T18:40:12.5302972	Tags for minecraft:block mod id elementalrealms
+// 1.21.1	2025-04-26T15:09:30.5551647	Tags for minecraft:block mod id elementalrealms
+64f2b3ca5d6b7e5d3926eb704b747697dfbca4fa data/minecraft/tags/block/logs.json
+1c3d766a18577c126f58233467795db04fa869c0 data/minecraft/tags/block/logs_that_burn.json
 bdecfd925523f8f2265ba7690e58a67f7b350289 data/minecraft/tags/block/mineable/pickaxe.json
 e120a344413767eedb288cfb074d3a91a8c218e9 data/minecraft/tags/block/needs_iron_tool.json
 b0b347fa6c1577b9c49c1be136c7c401ef33dc58 data/minecraft/tags/block/walls.json

@@ -8,6 +8,7 @@ import net.matos.elementalrealms.item.ModCreativeModesTabs;
 import net.matos.elementalrealms.item.ModItems;
 import net.matos.elementalrealms.potion.ModPotions;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -57,7 +58,9 @@ public class ElementalRealms {
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        event.enqueueWork(() -> {
+            ComposterBlock.COMPOSTABLES.put(ModItems.EMBEROOT.get(), 0.4f);
+        });
     }
 
     // Add the example block item to the building blocks tab

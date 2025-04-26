@@ -1,9 +1,11 @@
 package net.matos.elementalrealms.item;
 
 import net.matos.elementalrealms.ElementalRealms;
+import net.matos.elementalrealms.block.ModBlocks;
 import net.matos.elementalrealms.item.custom.*;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,7 +20,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> EMBEROOT = ITEMS.register("emberoot",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.EMBEROOT)));
+            () -> new ItemNameBlockItem(ModBlocks.EMBEROOT_CROP.get(), new Item.Properties().food(ModFoodProperties.EMBEROOT)));
 
    public static final RegistryObject<Item> TERRA_WARHAMMER = ITEMS.register("terra_warhammer",
           () -> new HammerItem(ModToolTiers.TERRAVALE, new Item.Properties()
@@ -39,7 +41,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> GOLDEN_ESSENCE = ITEMS.register("golden_essence",
             () -> new GoldenEssenceItem());
-
 
 
 

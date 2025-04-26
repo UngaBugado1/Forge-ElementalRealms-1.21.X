@@ -1,1 +1,5 @@
-// 1.21.1	2025-03-28T18:40:12.4503419	Tags for minecraft:item mod id elementalrealms
+// 1.21.1	2025-04-26T15:09:30.5401742	Tags for minecraft:item mod id elementalrealms
+1c3d766a18577c126f58233467795db04fa869c0 data/elementalrealms/tags/item/archaic_logs.json
+64f2b3ca5d6b7e5d3926eb704b747697dfbca4fa data/minecraft/tags/item/logs.json
+1c3d766a18577c126f58233467795db04fa869c0 data/minecraft/tags/item/logs_that_burn.json
+f0c91d393387d4d7f4481f0e192f0bc2995a9206 data/minecraft/tags/item/planks.json

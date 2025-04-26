@@ -3,9 +3,13 @@ package net.matos.elementalrealms.datagen;
 import net.matos.elementalrealms.ElementalRealms;
 import net.matos.elementalrealms.block.ModBlocks;
 import net.matos.elementalrealms.item.ModItems;
+import net.matos.elementalrealms.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -88,6 +92,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
+        planksFromLog(pRecipeOutput, ModBlocks.ARCHAIC_PLANKS.get().asItem(), ModTags.Items.ARCHAIC_LOGS, 4);
+
+        woodFromLogs(pRecipeOutput, ModBlocks.ARCHAIC_WOOD.get(), ModBlocks.ARCHAIC_LOG.get());
+        woodFromLogs(pRecipeOutput, ModBlocks.STRIPPED_ARCHAIC_WOOD.get(), ModBlocks.STRIPPED_ARCHAIC_LOG.get());
+
+
+
 
 
 
@@ -100,6 +111,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //        oreSmelting(pRecipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.SMELTABLE_OUTPUT.get(), 0.25f, 200, "smeltable_id");
 //        oreBlasting(pRecipeOutput, TEST_SMELTABLES, RecipeCategory.MISC, ModItems.SMELTABLE_OUTPUT.get(), 0.25f, 100, "smeltable_id");
 
+    }
+
+    protected static void woodFromLogs(RecipeOutput pRecipeOutput, ItemLike pWood, ItemLike pLog) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, pWood, 3).define('#', pLog).pattern("##").pattern("##").group("bark").unlockedBy("has_log", has(pLog)).save(pRecipeOutput);
+    }
+
+    protected static void planksFromLog(RecipeOutput pRecipeOutput, ItemLike pPlanks, TagKey<Item> pLogs, int pResultCount) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, pPlanks, pResultCount).requires(pLogs).group("planks").unlockedBy("has_log", has(pLogs)).save(pRecipeOutput);
     }
 
     protected static RecipeBuilder polishedBuilder(RecipeCategory pCategory, ItemLike pResult, Ingredient pMaterial) {

@@ -1,4 +1,4 @@
-package net.matos.elementalrealms.block;
+package net.matos.elementalrealms.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Direction;

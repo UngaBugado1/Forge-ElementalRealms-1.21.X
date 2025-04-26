@@ -41,6 +41,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.GEOCLUSTER.get());
 
+        tag(BlockTags.LOGS)
+                .add(ModBlocks.ARCHAIC_LOG.get());
+
         //tag(BlockTags.NEEDS_DIAMOND_TOOL)#
                 //.add(ModBlocks.TEST_BLOCK.get());
 
@@ -48,5 +51,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TERRAITE_WALL.get())
                 .add(ModBlocks.POLISHED_TERRAITE_WALL.get())
                 .add(ModBlocks.TERRAITE_BRICK_WALL.get());
+
+        this.tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.ARCHAIC_LOG.get())
+                .add(ModBlocks.ARCHAIC_WOOD.get())
+                .add(ModBlocks.STRIPPED_ARCHAIC_LOG.get())
+                .add(ModBlocks.STRIPPED_ARCHAIC_WOOD.get());
     }
 }

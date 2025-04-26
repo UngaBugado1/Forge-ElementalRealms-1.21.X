@@ -30,8 +30,8 @@ public record FungusWalkEnchantmentEffect() implements EnchantmentEntityEffect {
         if (attribute == null) return;
 
         double boostAmount = switch (pEnchantmentLevel) {
-            case 1 -> 0.28D;
-            case 2 -> 0.45D;
+            case 1 -> 0.20D;
+            case 2 -> 0.35D;
             default -> 0.0D; // Optional: fallback
         };
 

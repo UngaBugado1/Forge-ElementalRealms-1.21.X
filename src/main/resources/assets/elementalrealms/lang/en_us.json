@@ -11,6 +11,7 @@
   "item.elementalrealms.amethyst_leggings": "Amethyst Leggings",
   "item.elementalrealms.amethyst_boots": "Amethyst Boots",
   "item.elementalrealms.golden_essence": "Golden Essence",
+  "item.elementalrealms.emberoot_seeds": "Emberoot Seeds",
 
   "enchantment.elementalrealms.fungus_walk": "Fungus Walk",
 
@@ -28,5 +29,15 @@
   "block.elementalrealms.terraite_brick_slab": "Terraite Brick Slab",
   "block.elementalrealms.terraite_brick_wall": "Terraite Brick Wall",
   "block.elementalrealms.geocluster": "Geocluster",
-  "block.elementalrealms.chiseled_terraite": "Chiseled Terraite"
+  "block.elementalrealms.chiseled_terraite": "Chiseled Terraite",
+  "block.elementalrealms.emberoot_crop": "Emberoot Crop",
+
+  "block.elementalrealms.archaic_log": "Archaic Log",
+  "block.elementalrealms.archaic_wood": "Archaic Wood",
+  "block.elementalrealms.stripped_archaic_log": "Stripped Archaic Log",
+  "block.elementalrealms.stripped_archaic_wood": "Stripped Archaic Log",
+  "block.elementalrealms.archaic_leaves": "Archaic Leaves",
+  "block.elementalrealms.archaic_planks": "Archaic Planks",
+
+  "block.elementalrealms.archaic_sapling": "Archaic Sapling"
 }

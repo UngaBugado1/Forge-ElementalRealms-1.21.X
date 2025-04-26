@@ -33,9 +33,6 @@ public class ModEnchantments {
                         EquipmentSlotGroup.FEET))
                         .exclusiveWith(enchantments.getOrThrow(EnchantmentTags.BOOTS_EXCLUSIVE))
                         .withEffect(EnchantmentEffectComponents.TICK, new FungusWalkEnchantmentEffect()));
-
-
-
             }
 
 

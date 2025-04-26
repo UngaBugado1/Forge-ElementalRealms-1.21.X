@@ -1,13 +1,20 @@
 package net.matos.elementalrealms.block;
 
-import com.mojang.serialization.MapCodec;
 import net.matos.elementalrealms.ElementalRealms;
+import net.matos.elementalrealms.block.custom.ChiseledTerraiteBlock;
+import net.matos.elementalrealms.block.custom.EmberootCropBlock;
+import net.matos.elementalrealms.block.custom.ModFlammableRotatedPillarBlock;
 import net.matos.elementalrealms.item.ModItems;
+import net.matos.elementalrealms.worldgen.tree.ModTreeGrowers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -81,6 +88,65 @@ public class ModBlocks {
     public static final RegistryObject<Block> GEOCLUSTER = registerBlock("geocluster",
             () -> new DropExperienceBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+
+
+    public static final RegistryObject<Block> EMBEROOT_CROP =  BLOCKS.register("emberoot_crop",
+            () -> new EmberootCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+
+
+    public static final RegistryObject<RotatedPillarBlock> ARCHAIC_LOG = registerBlock("archaic_log",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> ARCHAIC_WOOD = registerBlock("archaic_wood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ARCHAIC_LOG = registerBlock("stripped_archaic_log",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
+    public static final RegistryObject<RotatedPillarBlock> STRIPPED_ARCHAIC_WOOD = registerBlock("stripped_archaic_wood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
+
+
+    public static final RegistryObject<Block> ARCHAIC_PLANKS = registerBlock("archaic_planks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)){
+
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 20;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 5;
+                }
+            });
+
+
+
+
+    public static final RegistryObject<Block> ARCHAIC_LEAVES = registerBlock("archaic_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)){
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 60;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return 30;
+                }
+            });
+
+
+    public static final RegistryObject<Block> ARCHAIC_SAPLING = registerBlock("archaic_sapling",
+            () -> new SaplingBlock(ModTreeGrowers.ARCHAIC,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
 
 

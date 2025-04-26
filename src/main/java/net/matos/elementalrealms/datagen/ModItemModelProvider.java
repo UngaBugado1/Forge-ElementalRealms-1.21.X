@@ -23,6 +23,15 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.VERINDITE_CRYSTAL.get());
         basicItem(ModItems.EMBEROOT.get());
+
+        saplingItem(ModBlocks.ARCHAIC_SAPLING);
+    }
+
+
+    private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(ElementalRealms.MOD_ID,"block/" + item.getId().getPath()));
     }
 
 
