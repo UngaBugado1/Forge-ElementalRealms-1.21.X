@@ -23,8 +23,21 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.VERINDITE_CRYSTAL.get());
         basicItem(ModItems.EMBEROOT.get());
+        basicItem(ModItems.TECTORAX_ARMOR.get());
+
+        wallItem(ModBlocks.TERRAITE_WALL, ModBlocks.TERRAITE);
+        wallItem(ModBlocks.POLISHED_TERRAITE_WALL, ModBlocks.POLISHED_TERRAITE);
+        wallItem(ModBlocks.TERRAITE_BRICK_WALL, ModBlocks.TERRAITE_BRICKS);
+        buttonItem(ModBlocks.POLISHED_TERRAITE_BUTTON, ModBlocks.POLISHED_TERRAITE);
 
         saplingItem(ModBlocks.ARCHAIC_SAPLING);
+
+        buttonItem(ModBlocks.ARCHAIC_BUTTON, ModBlocks.ARCHAIC_PLANKS);
+        fenceItem(ModBlocks.ARCHAIC_FENCE, ModBlocks.ARCHAIC_PLANKS);
+
+        simpleBlockItem(ModBlocks.ARCHAIC_DOOR);
+
+        withExistingParent(ModItems.TECTORAX_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
 
@@ -37,6 +50,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     public void buttonItem(RegistryObject<? extends Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/button_inventory"))
+                .texture("texture",  ResourceLocation.fromNamespaceAndPath(ElementalRealms.MOD_ID,
+                        "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+    }
+
+    public void fenceItem(RegistryObject<? extends Block> block, RegistryObject<Block> baseBlock) {
+        this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/fence_inventory"))
                 .texture("texture",  ResourceLocation.fromNamespaceAndPath(ElementalRealms.MOD_ID,
                         "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }

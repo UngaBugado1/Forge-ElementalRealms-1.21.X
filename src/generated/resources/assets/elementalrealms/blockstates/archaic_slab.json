@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "elementalrealms:block/archaic_slab"
+    },
+    "type=double": {
+      "model": "elementalrealms:block/archaic_planks"
+    },
+    "type=top": {
+      "model": "elementalrealms:block/archaic_slab_top"
+    }
+  }
+}

@@ -71,6 +71,24 @@ public class ModBlockStateProvider extends BlockStateProvider {
         leavesBlock(ModBlocks.ARCHAIC_LEAVES);
         saplingBlock(ModBlocks.ARCHAIC_SAPLING);
 
+        stairsBlock(ModBlocks.ARCHAIC_STAIRS.get(), blockTexture(ModBlocks.ARCHAIC_PLANKS.get()));
+        slabBlock(ModBlocks.ARCHAIC_SLAB.get(), blockTexture(ModBlocks.ARCHAIC_PLANKS.get()), blockTexture(ModBlocks.ARCHAIC_PLANKS.get()));
+
+        buttonBlock(ModBlocks.ARCHAIC_BUTTON.get(), blockTexture(ModBlocks.ARCHAIC_PLANKS.get()));
+        pressurePlateBlock(ModBlocks.ARCHAIC_PRESSURE_PLATE.get(), blockTexture(ModBlocks.ARCHAIC_PLANKS.get()));
+        fenceBlock(ModBlocks.ARCHAIC_FENCE.get(), blockTexture(ModBlocks.ARCHAIC_PLANKS.get()));
+        fenceGateBlock(ModBlocks.ARCHAIC_FENCE_GATE.get(), blockTexture(ModBlocks.ARCHAIC_PLANKS.get()));
+
+        doorBlockWithRenderType(ModBlocks.ARCHAIC_DOOR.get(), modLoc("block/archaic_door_bottom"), modLoc("block/archaic_door_top"), "cutout");
+        trapdoorBlockWithRenderType(ModBlocks.ARCHAIC_TRAPDOOR.get(), modLoc("block/archaic_trapdoor"), true, "cutout");
+
+
+        blockItem(ModBlocks.ARCHAIC_STAIRS);
+        blockItem(ModBlocks.ARCHAIC_SLAB);
+        blockItem(ModBlocks.ARCHAIC_FENCE_GATE);
+        blockItem(ModBlocks.ARCHAIC_PRESSURE_PLATE);
+        blockItem(ModBlocks.ARCHAIC_TRAPDOOR, "_bottom");
+
 
     }
 

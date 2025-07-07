@@ -4,9 +4,15 @@ import com.mojang.logging.LogUtils;
 import net.matos.elementalrealms.block.ModBlocks;
 import net.matos.elementalrealms.effect.ModEffects;
 import net.matos.elementalrealms.enchantment.ModEnchantmentEffects;
+import net.matos.elementalrealms.entity.ModEntities;
+import net.matos.elementalrealms.entity.client.TectoraxRenderer;
 import net.matos.elementalrealms.item.ModCreativeModesTabs;
 import net.matos.elementalrealms.item.ModItems;
 import net.matos.elementalrealms.potion.ModPotions;
+import net.matos.elementalrealms.screen.ModMenuTypes;
+import net.matos.elementalrealms.screen.custom.TectoraxScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,7 +35,7 @@ public class ElementalRealms {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "elementalrealms";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public ElementalRealms()
     {
@@ -45,10 +51,14 @@ public class ElementalRealms {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModEntities.register(modEventBus);
+
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
 
         ModEnchantmentEffects.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -82,6 +92,9 @@ public class ElementalRealms {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            EntityRenderers.register(ModEntities.TECTORAX.get(), TectoraxRenderer::new);
+
+            MenuScreens.register(ModMenuTypes.TECTORAX_MENU.get(), TectoraxScreen::new);
         }
     }
 }

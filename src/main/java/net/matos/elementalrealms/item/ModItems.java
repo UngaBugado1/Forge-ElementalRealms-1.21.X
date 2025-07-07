@@ -2,11 +2,10 @@ package net.matos.elementalrealms.item;
 
 import net.matos.elementalrealms.ElementalRealms;
 import net.matos.elementalrealms.block.ModBlocks;
+import net.matos.elementalrealms.entity.ModEntities;
 import net.matos.elementalrealms.item.custom.*;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -41,6 +40,13 @@ public class ModItems {
 
     public static final RegistryObject<Item> GOLDEN_ESSENCE = ITEMS.register("golden_essence",
             () -> new GoldenEssenceItem());
+
+    public static final RegistryObject<Item> TECTORAX_SPAWN_EGG = ITEMS.register("tectorax_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.TECTORAX, 0x7B5356, 0xB1A095,
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> TECTORAX_ARMOR = ITEMS.register("tectorax_armor",
+            () -> new TectoraxArmorItem(ArmorMaterials.IRON, new Item.Properties().durability(256)));
 
 
 

@@ -97,10 +97,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         woodFromLogs(pRecipeOutput, ModBlocks.ARCHAIC_WOOD.get(), ModBlocks.ARCHAIC_LOG.get());
         woodFromLogs(pRecipeOutput, ModBlocks.STRIPPED_ARCHAIC_WOOD.get(), ModBlocks.STRIPPED_ARCHAIC_LOG.get());
 
+        stairBuilder(ModBlocks.ARCHAIC_STAIRS.get(), Ingredient.of(ModBlocks.ARCHAIC_PLANKS.get())).group("archaic")
+                .unlockedBy(getHasName(ModBlocks.ARCHAIC_PLANKS.get()), has(ModBlocks.ARCHAIC_PLANKS.get())).save(pRecipeOutput);
+        slab(pRecipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ARCHAIC_SLAB.get(), ModBlocks.ARCHAIC_PLANKS.get());
 
 
+        fenceBuilder(ModBlocks.ARCHAIC_FENCE.get(), Ingredient.of(ModBlocks.ARCHAIC_PLANKS.get())).group("archaic")
+                .unlockedBy(getHasName(ModBlocks.ARCHAIC_PLANKS.get()), has(ModBlocks.ARCHAIC_PLANKS.get())).save(pRecipeOutput);
+        fenceGateBuilder(ModBlocks.ARCHAIC_FENCE_GATE.get(), Ingredient.of(ModBlocks.ARCHAIC_PLANKS.get())).group("archaic")
+                .unlockedBy(getHasName(ModBlocks.ARCHAIC_PLANKS.get()), has(ModBlocks.ARCHAIC_PLANKS.get())).save(pRecipeOutput);
 
 
+        doorBuilder(ModBlocks.ARCHAIC_DOOR.get(), Ingredient.of(ModBlocks.ARCHAIC_PLANKS.get())).group("archaic")
+                .unlockedBy(getHasName(ModBlocks.ARCHAIC_PLANKS.get()), has(ModBlocks.ARCHAIC_PLANKS.get())).save(pRecipeOutput);
+        trapdoorBuilder(ModBlocks.ARCHAIC_TRAPDOOR.get(), Ingredient.of(ModBlocks.ARCHAIC_PLANKS.get())).group("archaic")
+                .unlockedBy(getHasName(ModBlocks.ARCHAIC_PLANKS.get()), has(ModBlocks.ARCHAIC_PLANKS.get())).save(pRecipeOutput);
+
+
+        pressurePlate(pRecipeOutput, ModBlocks.ARCHAIC_PRESSURE_PLATE.get(), ModBlocks.ARCHAIC_PLANKS.get());
+
+        buttonBuilder(ModBlocks.ARCHAIC_BUTTON.get(), Ingredient.of(ModBlocks.ARCHAIC_PLANKS.get())).group("archaic")
+                .unlockedBy(getHasName(ModBlocks.ARCHAIC_PLANKS.get()), has(ModBlocks.ARCHAIC_PLANKS.get())).save(pRecipeOutput);
 
         //SHAPELESS RECIPE BUILDER
 //        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLOCK_ITEM.get(), 9)

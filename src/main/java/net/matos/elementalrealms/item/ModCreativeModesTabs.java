@@ -36,13 +36,21 @@ public static final RegistryObject<CreativeModeTab> TERRAVALE_ITEMS_TAB = CREATI
                  output.accept(ModBlocks.TERRAITE_BRICK_SLAB.get());
                  output.accept(ModBlocks.TERRAITE_BRICK_WALL.get());
                  output.accept(ModBlocks.GEOCLUSTER.get());
+                 output.accept(ModBlocks.ARCHAIC_SAPLING.get());
+                 output.accept(ModBlocks.ARCHAIC_LEAVES.get());
                  output.accept(ModBlocks.ARCHAIC_LOG.get());
                  output.accept(ModBlocks.ARCHAIC_WOOD.get());
                  output.accept(ModBlocks.STRIPPED_ARCHAIC_LOG.get());
                  output.accept(ModBlocks.STRIPPED_ARCHAIC_WOOD.get());
                  output.accept(ModBlocks.ARCHAIC_PLANKS.get());
-                 output.accept(ModBlocks.ARCHAIC_LEAVES.get());
-                 output.accept(ModBlocks.ARCHAIC_SAPLING.get());
+                 output.accept(ModBlocks.ARCHAIC_STAIRS.get());
+                 output.accept(ModBlocks.ARCHAIC_SLAB.get());
+                 output.accept(ModBlocks.ARCHAIC_FENCE.get());
+                 output.accept(ModBlocks.ARCHAIC_FENCE_GATE.get());
+                 output.accept(ModBlocks.ARCHAIC_BUTTON.get());
+                 output.accept(ModBlocks.ARCHAIC_TRAPDOOR.get());
+                 output.accept(ModBlocks.ARCHAIC_DOOR.get());
+                 output.accept(ModBlocks.ARCHAIC_PRESSURE_PLATE.get());
                  output.accept(ModItems.EMBEROOT.get());
                  output.accept(ModItems.TERRA_WARHAMMER.get());
                  output.accept(ModItems.AMETHYST_HELMET.get());
@@ -50,6 +58,8 @@ public static final RegistryObject<CreativeModeTab> TERRAVALE_ITEMS_TAB = CREATI
                  output.accept(ModItems.AMETHYST_LEGGINGS.get());
                  output.accept(ModItems.AMETHYST_BOOTS.get());
                  output.accept(ModItems.GOLDEN_ESSENCE.get());
+                 output.accept(ModItems.TECTORAX_SPAWN_EGG.get());
+                 output.accept(ModItems.TECTORAX_ARMOR.get());
                 }).build());
 
 

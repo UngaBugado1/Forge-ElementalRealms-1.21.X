@@ -56,7 +56,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
 
         this.add(ModBlocks.GEOCLUSTER.get(),
-                block -> createMultipleOreDrops(ModBlocks.GEOCLUSTER.get(), ModItems.VERINDITE_CRYSTAL.get(), 2, 6));
+                block -> createMultipleOreDrops(ModBlocks.GEOCLUSTER.get(), ModItems.VERINDITE_CRYSTAL.get(), 2, 3));
 
 
         LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.EMBEROOT_CROP.get())
@@ -73,6 +73,20 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.STRIPPED_ARCHAIC_WOOD.get());
         this.dropSelf(ModBlocks.ARCHAIC_PLANKS.get());
         this.dropSelf(ModBlocks.ARCHAIC_SAPLING.get());
+
+        this.dropSelf(ModBlocks.ARCHAIC_STAIRS.get());
+        this.dropSelf(ModBlocks.ARCHAIC_SLAB.get());
+        this.dropSelf(ModBlocks.ARCHAIC_FENCE.get());
+        this.dropSelf(ModBlocks.ARCHAIC_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.ARCHAIC_PRESSURE_PLATE.get());
+        this.dropSelf(ModBlocks.ARCHAIC_BUTTON.get());
+        this.dropSelf(ModBlocks.ARCHAIC_TRAPDOOR.get());
+
+        this.add(ModBlocks.ARCHAIC_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.ARCHAIC_SLAB.get()));
+
+        this.add(ModBlocks.ARCHAIC_DOOR.get(),
+                block -> createDoorTable(ModBlocks.ARCHAIC_DOOR.get()));
 
         this.add(ModBlocks.ARCHAIC_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.ARCHAIC_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));

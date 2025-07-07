@@ -12,6 +12,8 @@
   "item.elementalrealms.amethyst_boots": "Amethyst Boots",
   "item.elementalrealms.golden_essence": "Golden Essence",
   "item.elementalrealms.emberoot_seeds": "Emberoot Seeds",
+  "item.elementalrealms.tectorax_spawn_egg": "Tectorax Spawn Egg",
+  "item.elementalrealms.tectorax_armor": "Tectorax Armor",
 
   "enchantment.elementalrealms.fungus_walk": "Fungus Walk",
 
@@ -38,6 +40,16 @@
   "block.elementalrealms.stripped_archaic_wood": "Stripped Archaic Log",
   "block.elementalrealms.archaic_leaves": "Archaic Leaves",
   "block.elementalrealms.archaic_planks": "Archaic Planks",
+  "block.elementalrealms.archaic_stairs": "Archaic Stairs",
+  "block.elementalrealms.archaic_slab": "Archaic Slab",
+  "block.elementalrealms.archaic_fence": "Archaic Fence",
+  "block.elementalrealms.archaic_fence_gate": "Archaic Fence Gate",
+  "block.elementalrealms.archaic_pressure_plate": "Archaic Pressure Plate",
+  "block.elementalrealms.archaic_button": "Archaic Button",
+  "block.elementalrealms.archaic_door": "Archaic Door",
+  "block.elementalrealms.archaic_trapdoor": "Archaic Trapdoor",
 
-  "block.elementalrealms.archaic_sapling": "Archaic Sapling"
+  "block.elementalrealms.archaic_sapling": "Archaic Sapling",
+
+  "entity.elementalrealms.tectorax": "Tectorax"
 }

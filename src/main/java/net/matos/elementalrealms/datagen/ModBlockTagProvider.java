@@ -44,9 +44,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.LOGS)
                 .add(ModBlocks.ARCHAIC_LOG.get());
 
-        //tag(BlockTags.NEEDS_DIAMOND_TOOL)#
-                //.add(ModBlocks.TEST_BLOCK.get());
-
         tag(BlockTags.WALLS)
                 .add(ModBlocks.TERRAITE_WALL.get())
                 .add(ModBlocks.POLISHED_TERRAITE_WALL.get())
@@ -57,5 +54,27 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ARCHAIC_WOOD.get())
                 .add(ModBlocks.STRIPPED_ARCHAIC_LOG.get())
                 .add(ModBlocks.STRIPPED_ARCHAIC_WOOD.get());
+
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.ARCHAIC_FENCE.get());
+
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.ARCHAIC_FENCE_GATE.get());
+
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.ARCHAIC_STAIRS.get())
+                .add(ModBlocks.TERRAITE_STAIRS.get())
+                .add(ModBlocks.POLISHED_TERRAITE_STAIRS.get())
+                .add(ModBlocks.TERRAITE_BRICK_STAIRS.get());
+
+        tag(BlockTags.SLABS)
+                .add(ModBlocks.ARCHAIC_SLAB.get())
+                .add(ModBlocks.TERRAITE_SLAB.get())
+                .add(ModBlocks.POLISHED_TERRAITE_SLAB.get())
+                .add(ModBlocks.TERRAITE_BRICK_SLAB.get());
+
+        tag(BlockTags.STONE_BUTTONS)
+                .add(ModBlocks.POLISHED_TERRAITE_BUTTON.get());
+
     }
 }

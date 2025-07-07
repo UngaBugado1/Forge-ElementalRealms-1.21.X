@@ -1,6 +1,11 @@
-// 1.21.1	2025-04-26T15:09:30.5551647	Tags for minecraft:block mod id elementalrealms
+// 1.21.1	2025-04-26T20:40:35.2520997	Tags for minecraft:block mod id elementalrealms
+c1804785ab6a27d676b8d095f4ae249084a5bb7e data/minecraft/tags/block/fence_gates.json
 64f2b3ca5d6b7e5d3926eb704b747697dfbca4fa data/minecraft/tags/block/logs.json
 1c3d766a18577c126f58233467795db04fa869c0 data/minecraft/tags/block/logs_that_burn.json
 bdecfd925523f8f2265ba7690e58a67f7b350289 data/minecraft/tags/block/mineable/pickaxe.json
 e120a344413767eedb288cfb074d3a91a8c218e9 data/minecraft/tags/block/needs_iron_tool.json
+e250109f301ab2adf062fa08851f405f4d2c30d1 data/minecraft/tags/block/slabs.json
+d234632c414d4ffd8fd2ffd36f08d9452c38f40b data/minecraft/tags/block/stairs.json
+1aa14440b04325e2b059d1550b9549e146670e22 data/minecraft/tags/block/stone_buttons.json
 b0b347fa6c1577b9c49c1be136c7c401ef33dc58 data/minecraft/tags/block/walls.json
+579ea35ecc4e7532229400da3d618f221b645806 data/minecraft/tags/block/wooden_fences.json

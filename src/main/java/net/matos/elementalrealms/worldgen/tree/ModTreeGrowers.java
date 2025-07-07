@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class ModTreeGrowers {
         public static final TreeGrower ARCHAIC = new TreeGrower(ElementalRealms.MOD_ID + ":archaic",
+                Optional.of(ModConfiguredFeatures.ARCHAIC_TREE_BIG_KEY),
                 Optional.of(ModConfiguredFeatures.ARCHAIC_TREE_SMALL_KEY),
-                Optional.of(ModConfiguredFeatures.ARCHAIC_TREE_MEGA_KEY),
                 Optional.empty());
 }

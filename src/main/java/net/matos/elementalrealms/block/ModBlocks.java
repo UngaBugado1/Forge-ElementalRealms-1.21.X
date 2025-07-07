@@ -1,5 +1,6 @@
 package net.matos.elementalrealms.block;
 
+import com.mojang.serialization.MapCodec;
 import net.matos.elementalrealms.ElementalRealms;
 import net.matos.elementalrealms.block.custom.ChiseledTerraiteBlock;
 import net.matos.elementalrealms.block.custom.EmberootCropBlock;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -148,10 +150,32 @@ public class ModBlocks {
     public static final RegistryObject<Block> ARCHAIC_SAPLING = registerBlock("archaic_sapling",
             () -> new SaplingBlock(ModTreeGrowers.ARCHAIC,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
+    public static final RegistryObject<StairBlock> ARCHAIC_STAIRS = registerBlock("archaic_stairs",
+            () -> new StairBlock(ModBlocks.ARCHAIC_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
+
+    public static final RegistryObject<SlabBlock> ARCHAIC_SLAB = registerBlock("archaic_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB)));
+
+    public static final RegistryObject<FenceBlock> ARCHAIC_FENCE = registerBlock("archaic_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
+
+    public static final RegistryObject<FenceGateBlock> ARCHAIC_FENCE_GATE = registerBlock("archaic_fence_gate",
+            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
+
+    public static final RegistryObject<PressurePlateBlock> ARCHAIC_PRESSURE_PLATE = registerBlock("archaic_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.OAK,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
+
+    public static final RegistryObject<ButtonBlock> ARCHAIC_BUTTON = registerBlock("archaic_button",
+            () -> new ButtonBlock(BlockSetType.OAK, 4, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+
+    public static final RegistryObject<DoorBlock> ARCHAIC_DOOR = registerBlock("archaic_door",
+            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
+    public static final RegistryObject<TrapDoorBlock> ARCHAIC_TRAPDOOR = registerBlock("archaic_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
 
 
 
-private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block)
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block)
 {
     RegistryObject<T> toReturn = BLOCKS.register(name, block);
     registerBlockItem(name, toReturn);

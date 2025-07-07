@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "elementalrealms:block/archaic_planks",
+    "side": "elementalrealms:block/archaic_planks",
+    "top": "elementalrealms:block/archaic_planks"
+  }
+}
