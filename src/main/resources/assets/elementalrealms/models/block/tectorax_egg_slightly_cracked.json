@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "north": "elementalrealms:block/tectorax_egg_very_cracked_north",
+    "south": "elementalrealms:block/tectorax_egg_very_cracked_south",
+    "east": "elementalrealms:block/tectorax_egg_very_cracked_east",
+    "west": "elementalrealms:block/tectorax_egg_very_cracked_west",
+    "up": "elementalrealms:block/tectorax_egg_very_cracked_top",
+    "down": "elementalrealms:block/tectorax_egg_very_cracked_bottom"
+  }
+}

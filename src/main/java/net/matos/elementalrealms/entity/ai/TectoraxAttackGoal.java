@@ -3,7 +3,6 @@ package net.matos.elementalrealms.entity.ai;
 import net.matos.elementalrealms.entity.custom.TectoraxEntity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
 public class TectoraxAttackGoal extends MeleeAttackGoal {

@@ -5,6 +5,7 @@ import net.matos.elementalrealms.ElementalRealms;
 import net.matos.elementalrealms.block.custom.ChiseledTerraiteBlock;
 import net.matos.elementalrealms.block.custom.EmberootCropBlock;
 import net.matos.elementalrealms.block.custom.ModFlammableRotatedPillarBlock;
+import net.matos.elementalrealms.block.custom.TectoraxEggBlock;
 import net.matos.elementalrealms.item.ModItems;
 import net.matos.elementalrealms.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -172,6 +173,13 @@ public class ModBlocks {
             () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR)));
     public static final RegistryObject<TrapDoorBlock> ARCHAIC_TRAPDOOR = registerBlock("archaic_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_TRAPDOOR)));
+
+    public static final RegistryObject<Block> TECTORAX_EGG = registerBlock("tectorax_egg",
+            () -> new TectoraxEggBlock(BlockBehaviour.Properties.of()
+                    .strength(0.5F)
+                    .noOcclusion()
+                    .randomTicks())); // Enables the tick logic like Sniffer Egg
+
 
 
 

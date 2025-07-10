@@ -12,34 +12,65 @@ import net.minecraft.util.Mth;
 
 public class TectoraxModel<T extends TectoraxEntity> extends HierarchicalModel<T> {
 
+    private final ModelPart Root;
     private final ModelPart Body;
     private final ModelPart tail1;
+    private final ModelPart tail2;
+    private final ModelPart tail3;
+    private final ModelPart spike_tail;
+    private final ModelPart left_back_leg;
+    private final ModelPart right_back_leg;
+    private final ModelPart chests;
     private final ModelPart tier1;
     private final ModelPart tier2;
     private final ModelPart tier3;
+    private final ModelPart tail_armor;
     private final ModelPart torso;
+    private final ModelPart spike_front;
+    private final ModelPart spike_back;
     private final ModelPart neck;
     private final ModelPart head;
+    private final ModelPart jaw;
     private final ModelPart helmet;
+    private final ModelPart right_front_leg;
+    private final ModelPart left_front_leg;
+    private final ModelPart blanky;
+    private final ModelPart chestplate;
 
     public TectoraxModel(ModelPart root) {
-        this.Body = root.getChild("Body");
+        this.Root = root.getChild("Root");
+        this.Body = this.Root.getChild("Body");
         this.tail1 = this.Body.getChild("tail1");
+        this.tail2 = this.tail1.getChild("tail2");
+        this.tail3 = this.tail2.getChild("tail3");
+        this.spike_tail = this.tail2.getChild("spike_tail");
+        this.left_back_leg = this.tail1.getChild("left_back_leg");
+        this.right_back_leg = this.tail1.getChild("right_back_leg");
+        this.chests = this.tail1.getChild("chests");
+        this.tier1 = this.chests.getChild("tier1");
+        this.tier2 = this.chests.getChild("tier2");
+        this.tier3 = this.chests.getChild("tier3");
+        this.tail_armor = this.tail1.getChild("tail_armor");
         this.torso = this.Body.getChild("torso");
+        this.spike_front = this.torso.getChild("spike_front");
+        this.spike_back = this.torso.getChild("spike_back");
         this.neck = this.torso.getChild("neck");
         this.head = this.neck.getChild("head");
+        this.jaw = this.head.getChild("jaw");
         this.helmet = this.head.getChild("helmet");
-
-        this.tier1 = tail1.getChild("chests").getChild("tier1");
-        this.tier2 = tail1.getChild("chests").getChild("tier2");
-        this.tier3 = tail1.getChild("chests").getChild("tier3");
+        this.right_front_leg = this.torso.getChild("right_front_leg");
+        this.left_front_leg = this.torso.getChild("left_front_leg");
+        this.blanky = this.torso.getChild("blanky");
+        this.chestplate = this.torso.getChild("chestplate");
     }
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition Body = partdefinition.addOrReplaceChild("Body", CubeListBuilder.create(), PartPose.offset(0.0F, 12.4728F, -24.4721F));
+        PartDefinition Root = partdefinition.addOrReplaceChild("Root", CubeListBuilder.create(), PartPose.offset(0.0F, 12.4728F, -24.4721F));
+
+        PartDefinition Body = Root.addOrReplaceChild("Body", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         PartDefinition tail1 = Body.addOrReplaceChild("tail1", CubeListBuilder.create().texOffs(84, 84).addBox(-8.0F, -8.0F, -1.0F, 16.0F, 18.0F, 19.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -12.4728F, 30.4721F));
 
@@ -93,15 +124,15 @@ public class TectoraxModel<T extends TectoraxEntity> extends HierarchicalModel<T
         PartDefinition tier3 = chests.addOrReplaceChild("tier3", CubeListBuilder.create().texOffs(27, 200).mirror().addBox(8.0F, -3.5F, -4.0F, 3.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)).mirror(false)
                 .texOffs(2, 178).addBox(-11.0F, -3.5F, -3.5F, 3.0F, 6.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -2.5F, 7.0F));
 
-        PartDefinition tail_armor = tail1.addOrReplaceChild("tail_armor", CubeListBuilder.create().texOffs(192, 21).addBox(-8.5F, -8.25F, -1.5F, 17.0F, 0.0F, 20.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition tail_armor = tail1.addOrReplaceChild("tail_armor", CubeListBuilder.create().texOffs(192, 21).addBox(-8.5F, -8.0F, -1.5F, 17.0F, 0.0F, 20.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition cube_r6 = tail_armor.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(151, 142).mirror().addBox(-9.0F, 0.0F, -10.0F, 9.0F, 0.0F, 20.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-8.5F, -8.25F, 8.5F, 0.0F, 0.0F, -1.6144F));
+        PartDefinition cube_r6 = tail_armor.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(151, 142).mirror().addBox(-9.0F, 0.0F, -10.0F, 9.0F, 0.0F, 20.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-8.5F, -8.0F, 8.5F, 0.0F, 0.0F, -1.6144F));
 
-        PartDefinition cube_r7 = tail_armor.addOrReplaceChild("cube_r7", CubeListBuilder.create().texOffs(145, 133).addBox(-8.5F, 0.0F, -9.0F, 17.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -8.25F, 18.5F, 1.5708F, 0.0F, 0.0F));
+        PartDefinition cube_r7 = tail_armor.addOrReplaceChild("cube_r7", CubeListBuilder.create().texOffs(145, 133).addBox(-8.5F, 0.0F, -9.0F, 17.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -8.0F, 18.5F, 1.5708F, 0.0F, 0.0F));
 
         PartDefinition cube_r8 = tail_armor.addOrReplaceChild("cube_r8", CubeListBuilder.create().texOffs(204, 130).addBox(-8.5F, 0.0F, -9.0F, 17.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -8.0F, -1.5F, 1.5708F, 0.0F, 0.0F));
 
-        PartDefinition cube_r9 = tail_armor.addOrReplaceChild("cube_r9", CubeListBuilder.create().texOffs(169, 142).addBox(0.0F, 0.0F, -10.0F, 9.0F, 0.0F, 20.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(8.5F, -8.25F, 8.5F, 0.0F, 0.0F, 1.6144F));
+        PartDefinition cube_r9 = tail_armor.addOrReplaceChild("cube_r9", CubeListBuilder.create().texOffs(169, 142).addBox(0.0F, 0.0F, -10.0F, 9.0F, 0.0F, 20.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(8.5F, -8.0F, 8.5F, 0.0F, 0.0F, 1.6144F));
 
         PartDefinition torso = Body.addOrReplaceChild("torso", CubeListBuilder.create().texOffs(0, 0).addBox(-10.5F, -12.025F, -24.0F, 21.0F, 24.0F, 24.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -12.4479F, 30.4721F));
 
@@ -215,11 +246,11 @@ public class TectoraxModel<T extends TectoraxEntity> extends HierarchicalModel<T
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+        Root.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
     }
 
     @Override
     public ModelPart root() {
-        return Body;
+        return Root;
     }
 }

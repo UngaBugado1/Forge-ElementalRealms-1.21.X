@@ -151,14 +151,13 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
         return ModEntities.TECTORAX.get().create(serverLevel);
     }
 
-
     /* ANIMATION */
     private void setupAnimationStates() {
         boolean downstate = this.entityData.get(DOWNSTATE);
         boolean attacking = this.isAttacking();
 
-        // Handle idle animation only when NOT in downstate or attacking
-        if (!downstate && !attacking) {
+        // === IDLE ANIMATION ===
+        if (!downstate && !attacking && wakeUpStartTick == -1) {
             if (this.idleAnimationTimeout <= 0) {
                 this.idleAnimationTimeout = 60;
                 this.idleAnimationState.start(this.tickCount);
@@ -170,7 +169,7 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
             this.idleAnimationState.stop();
         }
 
-        // Sitting animation (unchanged)
+        // === SITTING ANIMATIONS ===
         if (this.isVisuallySitting()) {
             this.sitUpAnimationState.stop();
             if (this.isVisuallySittingDown()) {
@@ -186,7 +185,7 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
             this.sitUpAnimationState.animateWhen(this.isInPoseTransition() && this.getPoseTime() >= 0L, this.tickCount);
         }
 
-        // Attack animation
+        // === ATTACK ANIMATION ===
         if (attacking && attackAnimationTimeout <= 0) {
             attackAnimationTimeout = 15;
             attackAnimationState.start(this.tickCount);
@@ -198,55 +197,62 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
             attackAnimationState.stop();
         }
 
-        // === NEW KO/Sleep/Wake logic with sequencing ===
+        // === KO / SLEEP / WAKE LOGIC ===
         if (!this.isTame()) {
             if (downstate) {
                 if (this.getHealth() < 15.0F) {
                     if (knockOutStartTick == -1) {
-                        // Start knockout animation and record start tick
                         knockOutAnimationState.start(this.tickCount);
                         knockOutStartTick = this.tickCount;
                         sleepAnimationState.stop();
                         wakeUpAnimationState.stop();
                     } else {
-                        // Check if knockout animation finished (~0.92s = 19 ticks)
                         long elapsedTicks = this.tickCount - knockOutStartTick;
                         int knockOutDurationTicks = 19;
-
                         if (elapsedTicks >= knockOutDurationTicks) {
-                            // KO finished: stop KO animation and start sleeping
                             knockOutAnimationState.stop();
                             sleepAnimationState.startIfStopped(this.tickCount);
                             wakeUpAnimationState.stop();
                         } else {
-                            // KO still playing: keep sleeping stopped
                             sleepAnimationState.stop();
                             wakeUpAnimationState.stop();
                         }
                     }
                 } else {
-                    // Health recovered: reset all states and start wake up animation
                     knockOutAnimationState.stop();
                     sleepAnimationState.stop();
                     wakeUpAnimationState.startIfStopped(this.tickCount);
                     knockOutStartTick = -1;
                 }
             } else {
-                // Not downstate: reset all
                 knockOutAnimationState.stop();
                 sleepAnimationState.stop();
                 wakeUpAnimationState.stop();
                 knockOutStartTick = -1;
             }
-        } else {
-            // Tamed: reset all
-            knockOutAnimationState.stop();
-            sleepAnimationState.stop();
-            wakeUpAnimationState.stop();
-            knockOutStartTick = -1;
         }
 
-        // === DEBUG: Print currently active animations ===
+        // === WAKE-UP TRIGGER ON DOWNSTATE EXIT ===
+        if (wasInDownstate && !downstate) {
+            System.out.println("[ANIM DEBUG] Starting wake-up animation after downstate exit");
+            wakeUpAnimationState.start(this.tickCount);
+            knockOutAnimationState.stop();
+            sleepAnimationState.stop();
+            knockOutStartTick = -1;
+            wakeUpStartTick = this.tickCount;
+        }
+        wasInDownstate = downstate;
+
+        // === WAKE-UP END HANDLER ===
+        if (wakeUpStartTick != -1) {
+            long elapsed = this.tickCount - wakeUpStartTick;
+            if (elapsed >= 27) {
+                wakeUpAnimationState.stop();
+                wakeUpStartTick = -1;
+            }
+        }
+
+        // === DEBUG OUTPUT ===
         if (this.tickCount % 10 == 0) {
             System.out.println("[ANIM DEBUG] Active animations:");
             if (idleAnimationState.isStarted()) System.out.println(" - IDLE");
@@ -261,7 +267,11 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
     }
 
 
-    private long knockOutStartTick = -1; // Tracks when knockout animation started
+
+
+    private long knockOutStartTick = -1;
+    private long wakeUpStartTick = -1;
+    private boolean wasInDownstate = false;
 
 
 
@@ -343,7 +353,7 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
                 itemstack.shrink(1);
             }
 
-            if (this.random.nextInt(3) == 0) { // 1 in 3 chance to tame
+            if (this.random.nextInt(8) == 0) { // 1 in 3 chance to tame
                 this.tame(player);
                 this.level().broadcastEntityEvent(this, (byte) 7); // success particles
             } else {

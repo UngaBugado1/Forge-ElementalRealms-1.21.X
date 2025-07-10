@@ -51,6 +51,7 @@ public static final RegistryObject<CreativeModeTab> TERRAVALE_ITEMS_TAB = CREATI
                  output.accept(ModBlocks.ARCHAIC_TRAPDOOR.get());
                  output.accept(ModBlocks.ARCHAIC_DOOR.get());
                  output.accept(ModBlocks.ARCHAIC_PRESSURE_PLATE.get());
+                 output.accept(ModBlocks.TECTORAX_EGG.get());
                  output.accept(ModItems.EMBEROOT.get());
                  output.accept(ModItems.TERRA_WARHAMMER.get());
                  output.accept(ModItems.AMETHYST_HELMET.get());
