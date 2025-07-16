@@ -227,6 +227,7 @@ public class TectoraxModel<T extends TectoraxEntity> extends HierarchicalModel<T
         this.animate(entity.wakeUpAnimationState, TectoraxAnimations.ANIM_TECTORAX_WAKE_UP, ageInTicks, 1.0F);
 
         this.animate(entity.attackAnimationState, TectoraxAnimations.ANIM_TECTORAX_ATTACK, ageInTicks, 1.0F);
+        //this.animate(entity.earthquakeAttackAnimationState, TectoraxAnimations.ANIM_TECTORAX_EARTHQUAKE_ATTACK, ageInTicks, 1.0F);
 
 
         // VERY IMPORTANT AND VERY COOL!//

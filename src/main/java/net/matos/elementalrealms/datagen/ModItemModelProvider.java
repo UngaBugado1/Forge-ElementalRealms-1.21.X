@@ -24,6 +24,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VERINDITE_CRYSTAL.get());
         basicItem(ModItems.EMBEROOT.get());
         basicItem(ModItems.TECTORAX_ARMOR.get());
+        basicItem(ModItems.TECTORAX_HORN.get());
 
         wallItem(ModBlocks.TERRAITE_WALL, ModBlocks.TERRAITE);
         wallItem(ModBlocks.POLISHED_TERRAITE_WALL, ModBlocks.POLISHED_TERRAITE);

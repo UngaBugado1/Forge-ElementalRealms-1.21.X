@@ -1,8 +1,9 @@
 package net.matos.elementalrealms.entity.custom;
 
 import net.matos.elementalrealms.ElementalRealms;
-import net.matos.elementalrealms.entity.ModEntities;
 import net.matos.elementalrealms.entity.ai.TectoraxAttackGoal;
+import net.matos.elementalrealms.entity.ai.TectoraxBreedGoal;
+import net.matos.elementalrealms.entity.ai.TectoraxSleepHandler;
 import net.matos.elementalrealms.item.ModItems;
 import net.matos.elementalrealms.item.custom.TectoraxArmorItem;
 import net.matos.elementalrealms.screen.custom.TectoraxMenu;
@@ -20,13 +21,18 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.*;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -44,18 +50,26 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
     public static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(TectoraxEntity.class, EntityDataSerializers.BOOLEAN);
     public final AnimationState attackAnimationState = new AnimationState();
+    public final AnimationState earthquakeAttackAnimationState = new AnimationState();
+
     public int attackAnimationTimeout = 0;  // 3 seconds * 20 ticks
 
 
 
     public final AnimationState idleAnimationState = new AnimationState();
-    private int idleAnimationTimeout = 60;  // 3 seconds * 20 ticks
+    public int idleAnimationTimeout = 60;  // 3 seconds * 20 ticks
 
 
 
     public static final EntityDataAccessor<Boolean> DOWNSTATE =
             SynchedEntityData.defineId(TectoraxEntity.class, EntityDataSerializers.BOOLEAN);
 
+
+
+    public int earthquakeAttackTick = -1;
+    public long knockOutStartTick = -1;
+    public long wakeUpStartTick = -1;
+    public boolean wasInDownstate = false;
 
     public final AnimationState knockOutAnimationState = new AnimationState();
     public final AnimationState sleepAnimationState = new AnimationState();
@@ -96,10 +110,13 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
         this.goalSelector.addGoal(0, new FloatGoal(this));
 
         this.goalSelector.addGoal(0, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(1, new TectoraxAttackGoal(this, 1.0D, true, 4.5));
+
+        if (!this.isBaby()) {
+            this.goalSelector.addGoal(3, new TectoraxAttackGoal(this, 1.2D, true));
+        }
 
 
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
+        this.goalSelector.addGoal(2, new TectoraxBreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.of(ModItems.EMBEROOT.get()), true));
 
         this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.25d, 18f, 7f));
@@ -109,14 +126,18 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 4f));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<Player>(this, Player.class, 10, true, false, player -> !this.isTame()));
+        this.targetSelector.addGoal(3, new OwnerHurtByTargetGoal(this));
+        this.targetSelector.addGoal(4, new OwnerHurtTargetGoal(this));
     }
 
     private void enableGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(0, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(1, new TectoraxAttackGoal(this, 1.0D, true, 4.5));
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
+        if (!this.isBaby()) {
+            this.goalSelector.addGoal(3, new TectoraxAttackGoal(this, 1.2D, true));
+        }
+        this.goalSelector.addGoal(2, new TectoraxBreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.of(ModItems.EMBEROOT.get()), true));
         this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.25d, 18f, 7f));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1d));
@@ -131,7 +152,7 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Animal.createLivingAttributes().add(Attributes.MAX_HEALTH, 50D)
+        return Animal.createLivingAttributes().add(Attributes.MAX_HEALTH, 120D)
                 .add(Attributes.MOVEMENT_SPEED, 0.2)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.75D)
                 .add(Attributes.ATTACK_DAMAGE, 12f)
@@ -148,7 +169,7 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return ModEntities.TECTORAX.get().create(serverLevel);
+        return null;
     }
 
     /* ANIMATION */
@@ -198,81 +219,8 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
         }
 
         // === KO / SLEEP / WAKE LOGIC ===
-        if (!this.isTame()) {
-            if (downstate) {
-                if (this.getHealth() < 15.0F) {
-                    if (knockOutStartTick == -1) {
-                        knockOutAnimationState.start(this.tickCount);
-                        knockOutStartTick = this.tickCount;
-                        sleepAnimationState.stop();
-                        wakeUpAnimationState.stop();
-                    } else {
-                        long elapsedTicks = this.tickCount - knockOutStartTick;
-                        int knockOutDurationTicks = 19;
-                        if (elapsedTicks >= knockOutDurationTicks) {
-                            knockOutAnimationState.stop();
-                            sleepAnimationState.startIfStopped(this.tickCount);
-                            wakeUpAnimationState.stop();
-                        } else {
-                            sleepAnimationState.stop();
-                            wakeUpAnimationState.stop();
-                        }
-                    }
-                } else {
-                    knockOutAnimationState.stop();
-                    sleepAnimationState.stop();
-                    wakeUpAnimationState.startIfStopped(this.tickCount);
-                    knockOutStartTick = -1;
-                }
-            } else {
-                knockOutAnimationState.stop();
-                sleepAnimationState.stop();
-                wakeUpAnimationState.stop();
-                knockOutStartTick = -1;
-            }
-        }
-
-        // === WAKE-UP TRIGGER ON DOWNSTATE EXIT ===
-        if (wasInDownstate && !downstate) {
-            System.out.println("[ANIM DEBUG] Starting wake-up animation after downstate exit");
-            wakeUpAnimationState.start(this.tickCount);
-            knockOutAnimationState.stop();
-            sleepAnimationState.stop();
-            knockOutStartTick = -1;
-            wakeUpStartTick = this.tickCount;
-        }
-        wasInDownstate = downstate;
-
-        // === WAKE-UP END HANDLER ===
-        if (wakeUpStartTick != -1) {
-            long elapsed = this.tickCount - wakeUpStartTick;
-            if (elapsed >= 27) {
-                wakeUpAnimationState.stop();
-                wakeUpStartTick = -1;
-            }
-        }
-
-        // === DEBUG OUTPUT ===
-        if (this.tickCount % 10 == 0) {
-            System.out.println("[ANIM DEBUG] Active animations:");
-            if (idleAnimationState.isStarted()) System.out.println(" - IDLE");
-            if (attackAnimationState.isStarted()) System.out.println(" - ATTACK");
-            if (sitDownAnimationState.isStarted()) System.out.println(" - SIT DOWN");
-            if (sitPoseAnimationState.isStarted()) System.out.println(" - SIT POSE");
-            if (sitUpAnimationState.isStarted()) System.out.println(" - SIT UP");
-            if (knockOutAnimationState.isStarted()) System.out.println(" - KNOCKOUT");
-            if (sleepAnimationState.isStarted()) System.out.println(" - SLEEP");
-            if (wakeUpAnimationState.isStarted()) System.out.println(" - WAKE UP");
-        }
+        TectoraxSleepHandler.handle(this);
     }
-
-
-
-
-    private long knockOutStartTick = -1;
-    private long wakeUpStartTick = -1;
-    private boolean wasInDownstate = false;
-
 
 
 
@@ -287,23 +235,32 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
 
         // === SERVER-SIDE ===
         if (!this.level().isClientSide) {
-            if (!this.isTame()) {
-                if (this.getHealth() < 15.0F) {
-                    if (!isDownstate()) {
-                        System.out.println("[DEBUG] Health below 15 - disabling goals and setting downstate true");
-                        disableGoals();
-                        this.entityData.set(DOWNSTATE, true);
+            // Prevent babies from downstate or tame state
+            if (!this.isBaby()) {
+                if (!this.isTame()) {
+                    if (this.getHealth() < 15.0F) {
+                        if (!isDownstate()) {
+                            System.out.println("[DEBUG] Health below 15 - disabling goals and setting downstate true");
+                            disableGoals();
+                            this.entityData.set(DOWNSTATE, true);
+                        }
+                    } else {
+                        if (isDownstate()) {
+                            System.out.println("[DEBUG] Health >= 15 - enabling goals and setting downstate false");
+                            enableGoals();
+                            this.entityData.set(DOWNSTATE, false);
+                        }
                     }
                 } else {
                     if (isDownstate()) {
-                        System.out.println("[DEBUG] Health >= 15 - enabling goals and setting downstate false");
+                        System.out.println("[DEBUG] Tamed but still in downstate — resetting");
                         enableGoals();
                         this.entityData.set(DOWNSTATE, false);
                     }
                 }
             } else {
+                // Babies can never be in downstate or have goals disabled
                 if (isDownstate()) {
-                    System.out.println("[DEBUG] Tamed but still in downstate — resetting");
                     enableGoals();
                     this.entityData.set(DOWNSTATE, false);
                 }
@@ -328,24 +285,67 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
 
 
 
+
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
+        Item item = itemstack.getItem();
+
+        // Check if holding Glowberry (replace if custom)
+        boolean isGlowberry = item == Items.GLOW_BERRIES;
 
         // Client-side handling for hand animation and result prediction
         if (this.level().isClientSide) {
             boolean isTameItem = this.isFood(itemstack);
             if (this.isTame() && !this.isVehicle()) {
                 return InteractionResult.SUCCESS;
-            } else if (!this.isTame() && isTameItem && isDownstate()) {
+            } else if (!this.isTame() && isTameItem && isDownstate() && !this.isBaby()) {
                 return InteractionResult.SUCCESS;
             }
         }
 
-        // Attempt to tame with food ONLY if in downstate
+        // Special handling for Glowberries as breeding food:
+        if (isGlowberry) {
+            if (this.isBaby()) {
+                if (!level().isClientSide) {
+                    player.displayClientMessage(Component.literal("The Tectorax is too young to tame!"), true);
+                }
+                return InteractionResult.CONSUME;
+            }
+
+            // Only allow breeding (love state + particles) if tamed
+            if (this.isTame()) {
+                if (this.canFallInLove()) {
+                    if (!player.getAbilities().instabuild) {
+                        itemstack.shrink(1);
+                    }
+                    this.setInLove(player);
+                    if (!this.level().isClientSide) {
+                        this.level().broadcastEntityEvent(this, (byte)7); // Heart particles
+                    }
+                    return InteractionResult.sidedSuccess(level().isClientSide);
+                } else {
+                    return InteractionResult.PASS;
+                }
+            } else {
+                // Not tamed = no particles, no breeding
+                return InteractionResult.PASS;
+            }
+        }
+
+        // Existing taming logic with other foods when in downstate
         if (!this.isTame() && this.isFood(itemstack)) {
+            if (this.isBaby()) {
+                if (!level().isClientSide) {
+                    player.displayClientMessage(Component.literal("The Tectorax is too young to tame!"), true);
+                }
+                return InteractionResult.CONSUME;
+            }
+
             if (!isDownstate()) {
-                player.displayClientMessage(Component.literal("The Tectorax is too strong to tame right now!"), true);
+                if (!level().isClientSide) {
+                    player.displayClientMessage(Component.literal("The Tectorax is too strong to tame right now!"), true);
+                }
                 return InteractionResult.CONSUME;
             }
 
@@ -353,24 +353,25 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
                 itemstack.shrink(1);
             }
 
-            if (this.random.nextInt(8) == 0) { // 1 in 3 chance to tame
+            if (this.random.nextInt(8) == 0) { // 1 in 8 chance to tame
                 this.tame(player);
-                this.level().broadcastEntityEvent(this, (byte) 7); // success particles
+                this.level().broadcastEntityEvent(this, (byte)7); // success particles
             } else {
-                this.level().broadcastEntityEvent(this, (byte) 6); // failure particles
+                this.level().broadcastEntityEvent(this, (byte)6); // failure particles
             }
 
             return InteractionResult.CONSUME;
         }
 
+        // Interaction when tamed by owner
         if (this.isTame() && this.isOwnedBy(player)) {
-            // Toggle sitting if player is crouching (sneaking)
             if (player.isShiftKeyDown()) {
+                // Toggle sitting only if NOT holding glowberry (handled above)
                 this.toggleSitting();
                 return InteractionResult.sidedSuccess(this.level().isClientSide);
             }
 
-            // Mount if not crouching
+            // Ride only if not holding glowberry
             if (!player.isShiftKeyDown()) {
                 player.startRiding(this);
                 return InteractionResult.CONSUME;
@@ -379,6 +380,10 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
 
         return super.mobInteract(player, hand);
     }
+
+
+
+
 
 
 

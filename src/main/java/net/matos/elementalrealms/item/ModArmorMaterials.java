@@ -26,6 +26,13 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.HELMET, 5);
             }), 15, 4f, 0.1f, () -> ModItems.VERINDITE_CRYSTAL.get());
 
+
+    public static final Holder<ArmorMaterial> SEISMIC_ARMOR_MATERIAL = register("seismic", Util.make(new EnumMap<>(ArmorItem.Type.class),
+            attribute -> {
+                attribute.put(ArmorItem.Type.HELMET, 5);
+            }), 15, 4f, 0.1f, () -> ModItems.VERINDITE_CRYSTAL.get());
+
+
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection,
                                                   int enchantability, float toughness, float knockbackResistance,
                                                   Supplier<Item> ingredientItem) {

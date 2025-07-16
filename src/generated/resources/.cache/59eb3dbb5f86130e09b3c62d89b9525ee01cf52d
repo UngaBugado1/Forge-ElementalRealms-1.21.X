@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-26T20:40:35.2361087	Loot Tables
+// 1.21.1	2025-07-10T15:50:46.6947871	Loot Tables
 127e07d71d901db798ef2344e1c0ea4aa7fa13e0 data/elementalrealms/loot_table/blocks/archaic_button.json
 ca9edda266829a2f31698aff0b4d7c7a74116525 data/elementalrealms/loot_table/blocks/archaic_door.json
 88a30a8e4c07a1ac8b3b6ed09e33882525e247ad data/elementalrealms/loot_table/blocks/archaic_fence.json
@@ -22,6 +22,7 @@ c0e98ec581658e981d70c281a8db6d64bcfa1cfe data/elementalrealms/loot_table/blocks/
 2fc1fcfde0de42452b433de9af07874476351b92 data/elementalrealms/loot_table/blocks/polished_terraite_wall.json
 7981d375ac037026a2b43aa77c879f474a6cc3be data/elementalrealms/loot_table/blocks/stripped_archaic_log.json
 72ed995ecdc80425df2ddc45f85790d39f1d8117 data/elementalrealms/loot_table/blocks/stripped_archaic_wood.json
+c335ee1192161f875a2bf992ae4cf3e690a7515f data/elementalrealms/loot_table/blocks/tectorax_egg.json
 32e6b453c98feee39d2a70becb087237fbfca266 data/elementalrealms/loot_table/blocks/terraite.json
 1dfd9fb9f2112e4cb483a9c01e8cc57430d24ad6 data/elementalrealms/loot_table/blocks/terraite_bricks.json
 c41b2a176211bea084574f3ef3744c2cc0db5113 data/elementalrealms/loot_table/blocks/terraite_brick_slab.json

@@ -32,6 +32,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.CHISELED_TERRAITE.get());
+        dropSelf(ModBlocks.TECTORAX_EGG.get());
 
         dropSelf(ModBlocks.TERRAITE.get());
         dropSelf(ModBlocks.TERRAITE_STAIRS.get());

@@ -178,7 +178,7 @@ public class ModBlocks {
             () -> new TectoraxEggBlock(BlockBehaviour.Properties.of()
                     .strength(0.5F)
                     .noOcclusion()
-                    .randomTicks())); // Enables the tick logic like Sniffer Egg
+                    .randomTicks()));
 
 
 

@@ -25,6 +25,9 @@ public class ModItems {
           () -> new HammerItem(ModToolTiers.TERRAVALE, new Item.Properties()
                     .attributes(PickaxeItem.createAttributes(ModToolTiers.TERRAVALE, 3, -3.5f))));
 
+    public static final RegistryObject<Item> SEISMIC_HELMET = ITEMS.register("seismic_helmet",
+            () -> new SeismicArmorItem(ModArmorMaterials.SEISMIC_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1)));
+
 
     public static final RegistryObject<Item> AMETHYST_HELMET = ITEMS.register("amethyst_helmet",
             () -> new AmethystArmorItem(ModArmorMaterials.AMETHYST_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1)));
@@ -46,7 +49,10 @@ public class ModItems {
                     new Item.Properties()));
 
     public static final RegistryObject<Item> TECTORAX_ARMOR = ITEMS.register("tectorax_armor",
-            () -> new TectoraxArmorItem(ArmorMaterials.IRON, new Item.Properties().durability(256)));
+            () -> new TectoraxArmorItem(ArmorMaterials.IRON, new Item.Properties()));
+
+    public static final RegistryObject<Item> TECTORAX_HORN = ITEMS.register("tectorax_horn",
+            () -> new TectoraxHornItem(new Item.Properties()));
 
 
 

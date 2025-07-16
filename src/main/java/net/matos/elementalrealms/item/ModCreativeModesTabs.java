@@ -61,6 +61,8 @@ public static final RegistryObject<CreativeModeTab> TERRAVALE_ITEMS_TAB = CREATI
                  output.accept(ModItems.GOLDEN_ESSENCE.get());
                  output.accept(ModItems.TECTORAX_SPAWN_EGG.get());
                  output.accept(ModItems.TECTORAX_ARMOR.get());
+                 output.accept(ModItems.SEISMIC_HELMET.get());
+                 output.accept(ModItems.TECTORAX_HORN.get());
                 }).build());
 
 

@@ -4,13 +4,14 @@ import net.matos.elementalrealms.entity.custom.TectoraxEntity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.level.pathfinder.Path;
 
 public class TectoraxAttackGoal extends MeleeAttackGoal {
     private final TectoraxEntity tectorax;
     private final double attackReach;
     private final double customSpeedModifier;
 
-    private int attackDelay = 10;
+    private int attackDelay = 8;
     private int ticksUntilNextAttack = 30;
     private boolean shouldCountTillNextAttack = true;
 
@@ -28,7 +29,7 @@ public class TectoraxAttackGoal extends MeleeAttackGoal {
     @Override
     public void start() {
         super.start();
-        attackDelay = 10;
+        attackDelay = 8;
         ticksUntilNextAttack = 30;
     }
 
@@ -87,10 +88,12 @@ public class TectoraxAttackGoal extends MeleeAttackGoal {
         if (target != null) {
             double distance = this.mob.distanceTo(target);
             if (distance > this.attackReach - 0.25) {
-                // Move toward target if too far
-                this.mob.getNavigation().moveTo(target, this.customSpeedModifier);
+                // Use accurate pathing to avoid stopping too far
+                Path path = this.mob.getNavigation().createPath(target, 0);
+                if (path != null) {
+                    this.mob.getNavigation().moveTo(path, this.customSpeedModifier);
+                }
             } else {
-                // Stop moving when close enough to attack
                 this.mob.getNavigation().stop();
             }
         }
@@ -103,4 +106,3 @@ public class TectoraxAttackGoal extends MeleeAttackGoal {
         super.stop();
     }
 }
-

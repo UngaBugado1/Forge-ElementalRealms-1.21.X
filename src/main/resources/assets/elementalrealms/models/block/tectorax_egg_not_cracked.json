@@ -1,11 +1,11 @@
 {
-  "parent": "block/cube",
+  "parent": "elementalrealms:block/tectorax_egg",
   "textures": {
-    "north": "elementalrealms:block/tectorax_egg_not_cracked_north",
-    "south": "elementalrealms:block/tectorax_egg_not_cracked_south",
-    "east": "elementalrealms:block/tectorax_egg_not_cracked_east",
-    "west": "elementalrealms:block/tectorax_egg_not_cracked_west",
-    "up": "elementalrealms:block/tectorax_egg_not_cracked_top",
-    "down": "elementalrealms:block/tectorax_egg_not_cracked_bottom"
+    "bottom": "elementalrealms:block/tectorax_egg_not_cracked_bottom",
+    "east":   "elementalrealms:block/tectorax_egg_not_cracked_east",
+    "north":  "elementalrealms:block/tectorax_egg_not_cracked_north",
+    "south":  "elementalrealms:block/tectorax_egg_not_cracked_south",
+    "top":    "elementalrealms:block/tectorax_egg_not_cracked_top",
+    "west":   "elementalrealms:block/tectorax_egg_not_cracked_west"
   }
 }
