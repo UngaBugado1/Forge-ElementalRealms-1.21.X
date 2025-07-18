@@ -279,13 +279,6 @@ public class TectoraxEntity extends TamableAnimal implements ContainerListener, 
         }
     }
 
-
-
-
-
-
-
-
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);

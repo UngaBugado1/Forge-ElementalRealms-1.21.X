@@ -13,28 +13,34 @@ import net.minecraft.world.level.Level;
 
 public class TectoraxHornItem extends Item {
 
+    // Duration like goat horn (140 ticks = 7 seconds)
+    private static final int USE_DURATION = 140;
+
     public TectoraxHornItem(Properties properties) {
         super(properties);
     }
-
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         player.startUsingItem(hand);
+
+        // Cooldown to match duration
+        player.getCooldowns().addCooldown(this, USE_DURATION);
+
+        // Louder horn sound
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.RAID_HORN, SoundSource.PLAYERS, 1.0F, 1.0F);
+                SoundEvents.RAID_HORN, SoundSource.PLAYERS, 200.0F, 1.0F);
 
         return InteractionResultHolder.consume(stack);
     }
 
     @Override
     public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
-        return 32;
+        return USE_DURATION;
     }
-
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
+    public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.TOOT_HORN;
     }
 }

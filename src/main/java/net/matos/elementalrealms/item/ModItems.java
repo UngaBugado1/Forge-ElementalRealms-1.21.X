@@ -54,6 +54,9 @@ public class ModItems {
     public static final RegistryObject<Item> TECTORAX_HORN = ITEMS.register("tectorax_horn",
             () -> new TectoraxHornItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> TERRAITE_SPEAR = ITEMS.register("terraite_spear",
+            () -> new Item(new Item.Properties()));
+
 
 
 

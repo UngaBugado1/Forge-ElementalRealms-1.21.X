@@ -13,6 +13,8 @@ import net.matos.elementalrealms.screen.ModMenuTypes;
 import net.matos.elementalrealms.screen.custom.TectoraxScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
@@ -92,6 +94,12 @@ public class ElementalRealms {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            ItemProperties.register(
+                    ModItems.TECTORAX_HORN.get(),
+                    ResourceLocation.fromNamespaceAndPath("minecraft", "tooting"),
+                    (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+            );
+
             EntityRenderers.register(ModEntities.TECTORAX.get(), TectoraxRenderer::new);
 
             MenuScreens.register(ModMenuTypes.TECTORAX_MENU.get(), TectoraxScreen::new);

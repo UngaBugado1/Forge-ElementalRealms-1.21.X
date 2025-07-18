@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-15T15:10:54.8495696	Item Models: elementalrealms
+// 1.21.1	2025-07-17T20:28:47.3908128	Item Models: elementalrealms
 6589c57ee21c350b912dd544d2b3bb3463d2207b assets/elementalrealms/models/item/archaic_button.json
 0018dfa13d7b7e0756d279e656449801a6627867 assets/elementalrealms/models/item/archaic_door.json
 1602ce1d7cdb92ae2cacea070511eaa8711f6076 assets/elementalrealms/models/item/archaic_fence.json
@@ -7,7 +7,6 @@ b43d4c182f1644fdb2118e736a650bcfc3534dda assets/elementalrealms/models/item/arch
 cdbeedceee5f1b2c68316bc83180ad46db92d862 assets/elementalrealms/models/item/polished_terraite_button.json
 871f91f4a960f71b78e08049ce8eadfa4dddbd80 assets/elementalrealms/models/item/polished_terraite_wall.json
 cc73d3ccd474ac98078bda1422c223690dc4534a assets/elementalrealms/models/item/tectorax_armor.json
-12bc98154e48ad757ff73b5b9a00bd48fa7ed238 assets/elementalrealms/models/item/tectorax_horn.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/elementalrealms/models/item/tectorax_spawn_egg.json
 9d8e134f0c39c183931f931d711046b5e12571d6 assets/elementalrealms/models/item/terraite_brick_wall.json
 a98ac07d98589791526edefd93c43220918a7821 assets/elementalrealms/models/item/terraite_wall.json
